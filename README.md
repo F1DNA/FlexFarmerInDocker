@@ -35,7 +35,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 
 3.	Use the following command to set up the stable repository.
 
-a.	X86_64 / amd64
+  a.	X86_64 / amd64
 
 ```
 echo \
@@ -165,7 +165,7 @@ nano config.yml
 You will place your config.yml in here.  However you go about creating the config.yml is up to you.  I will walk you through the easiest method which is to use the flexpool.io tool.
 
 4.	Navigate to https://www.flexpool.io
-5.	
+
 a.	Click on Start Faming in the Chia section
 
 b.	Click on the FlexFarmer option
