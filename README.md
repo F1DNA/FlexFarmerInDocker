@@ -17,33 +17,43 @@ Reference the official docker documentation for details
 https://docs.docker.com/engine/install/ubuntu/
 Setup the repository
 1.	Update the apt package index and install packages to allow apt to use a repository over HTTPS
-```sudo apt-get update
+```
+sudo apt-get update
 sudo apt-get install \
 apt-transport-https \
 ca-certificates \
 curl \
 gnupg \
-lsb-release```
+lsb-release
+```
 
 2.	Add Docker’s official GPG Key
 
-```curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg```
+```
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+```
 
 3.	Use the following command to set up the stable repository.
 a.	X86_64 / amd64
 
-```echo \
+```
+echo \
   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null```
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
 b.	Arm64 (Rasp Pi)
-```echo \
+```
+echo \
   "deb [arch=arm64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null```
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
 
 Install Docker Engine
 
-```sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io```
+```
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
 
 That’s it, Docker is installed!
 
@@ -55,11 +65,15 @@ https://github.com/portainer/portainer/blob/develop/README.md
 
 1.	Create the portainer volume
 
-```sudo docker volume create portainer_data```
+```
+sudo docker volume create portainer_data
+```
 
 2.	Create the container
 
-```sudo docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce```
+```
+sudo docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
+```
 
 Portainer is now installed.  To access portainer, open a browser on any computer on your network and browse to your FlexFarmer machine’s IP or hostname, specifying the port 9000.
 
@@ -96,7 +110,8 @@ Name it “watchtower” (DO NOT USE ANY CAPITAL LETTERS)
 
 Paste the following into web editor.  The only thing you should need to change is the Timezone line to wherever you are.  If you take out the environment and -TZ lines, it will use UTC which is also fine.  As well, you can change the –interval to however many seconds you want.  I have this setup for 21,600 seconds or 6 hours.
 
-```version: '3'
+```
+version: '3'
 services:
    watchtower:
       container_name: watchtower
@@ -106,7 +121,8 @@ services:
       - TZ=America/Chicago
       volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      command: --debug --interval 21600 –cleanup```
+      command: --debug --interval 21600 –cleanup
+```
 
 Note that spacing matters as this is YAML code:
 
@@ -128,16 +144,22 @@ Now we have a bit of setup to do.
 
 1.	Navigate to your home folder
 
-```cd /home/username```
+```
+cd /home/username
+```
 
 2.	Create a directory called flexfarmer and CD into it
 
-```mkdir flexfarmer
-Cd flexfarmer```
+```
+mkdir flexfarmer
+Cd flexfarmer
+```
 
 3.	Create your config file:
 
-```nano config.yml```
+```
+nano config.yml
+```
 
 You will place your config.yml in here.  However you go about creating the config.yml is up to you.  I will walk you through the easiest method which is to use the flexpool.io tool.
 
@@ -152,12 +174,16 @@ g.	Obviously step 10 on the webpage we will not be doing as we have not installe
 5.	Back in nano, copy/paste the config file info from the webpage into nano
 6.	Bonus: Enable log files, highly recommend doing this.  Just add this line to the end of your config file:
 
-```log_file_path: /flexfarmer.log # Write logs to a specific file```
+```
+log_file_path: /flexfarmer.log # Write logs to a specific file
+```
 
 7.	Press “ctrl+x” to exit nano and then press “y” to save
 8.	Create the initial flexfarmer.log file:
 
-```touch flexfarmer.log```
+```
+touch flexfarmer.log
+```
 
 Back in Portainer, let’s get the Flexfarmer container setup:
 
@@ -165,7 +191,8 @@ Back in Portainer, let’s get the Flexfarmer container setup:
 2.	Name it “flexfarmer” – Remember, no caps
 3.	Paste in the following:
 
-```version: "3"
+```
+version: "3"
 
 services:
   flexfarmer:
@@ -179,7 +206,8 @@ services:
       -c /config.yml
     environment:
       - TZ=America/Chicago
-    restart: unless-stopped```
+    restart: unless-stopped
+```
 
 So again, we have some options here.  First, I mapped all of /mnt to the container.  You COULD specify each mount point.  I.E.:
 
@@ -194,7 +222,9 @@ And of course, TZ=America/Chicago – you need your region/city or just remove b
 4.	When you are ready, hut update stack
 5.	Back in the terminal from your flexfarmer folder, run:
 
-```tail -f -n + flexfarmer.log```
+```
+tail -f -n +0 flexfarmer.log
+```
 6.	Make sure everything looks good here.  No invalid plots, all plot folders showing up, total space looks right, signage points signing, partials submitting, etc
 
 
