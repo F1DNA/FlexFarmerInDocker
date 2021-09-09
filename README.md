@@ -34,6 +34,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 ```
 
 3.	Use the following command to set up the stable repository.
+
 a.	X86_64 / amd64
 
 ```
@@ -164,22 +165,32 @@ nano config.yml
 You will place your config.yml in here.  However you go about creating the config.yml is up to you.  I will walk you through the easiest method which is to use the flexpool.io tool.
 
 4.	Navigate to https://www.flexpool.io
+5.	
 a.	Click on Start Faming in the Chia section
+
 b.	Click on the FlexFarmer option
+
 c.	Leave OS on Linux
+
 d.	Skip Downloading FlexFarmer as we will be pulling the image from dockerhub instead of manually downloading and installing
+
 e.	Scroll down and paste your mnemonic phrase in (Feel free to download the tool to your machine instead of using the browser for a more secure process)
+
 f.	Then follow the rest of the tool to create your base config file template
+
 g.	Obviously step 10 on the webpage we will not be doing as we have not installed flexfarmer yet and this will be run for you automagically when the container starts
+
 5.	Back in nano, copy/paste the config file info from the webpage into nano
-6.	Bonus: Enable log files, highly recommend doing this.  Just add this line to the end of your config file:
+
+7.	Bonus: Enable log files, highly recommend doing this.  Just add this line to the end of your config file:
 
 ```
 log_file_path: /flexfarmer.log # Write logs to a specific file
 ```
 
 7.	Press “ctrl+x” to exit nano and then press “y” to save
-8.	Create the initial flexfarmer.log file:
+8.	
+9.	Create the initial flexfarmer.log file:
 
 ```
 touch flexfarmer.log
