@@ -6,19 +6,19 @@ Written using Ubuntu Server – Ubuntu Desktop should be identical, for Windows 
 
 In addition to installing docker, we are going to setup 3 containers in total:
 
-Portainer 
+**Portainer** 
 
 •	For those experienced with Docker, this is not necessary nor should you need my guide at all!  But for those new to Docker, this will make it very easy to use as it provides a GUI via we browser.  We will be utilizing Portainer in a Docker-Compose fashion.  Docker-Compose is way to setup containers via a configuration file instead of a long command
 
-Watchtower
+**Watchtower**
 
 •	Watchtower will check your containers for updates on a schedule, download the new images and restart the container with the new image
 
-FlexFarmer
+**FlexFarmer**
 
 •	This is why you are here, right?  
 
-Install Docker
+**Install Docker**
 
 Reference the official docker documentation for details
 
@@ -70,7 +70,7 @@ That’s it, Docker is installed!
 
 You can verify this simply by typing `docker` which will show the basic docker help file
 
-Install Portainer
+**Install Portainer**
 
 https://github.com/portainer/portainer/blob/develop/README.md
 
@@ -252,3 +252,7 @@ tail -f -n +0 flexfarmer.log
 6.	Make sure everything looks good here.  No invalid plots, all plot folders showing up, total space looks right, signage points signing, partials submitting, etc
 
 
+
+**Should you feel compelled, you may send a tip in the form of XCH to:**
+
+xch1u2jhwq9q37v822ejvjytu289th4wad8azuyu7m0gmjuzzzd76dkqx06phs
