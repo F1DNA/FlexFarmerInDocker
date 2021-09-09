@@ -227,7 +227,7 @@ services:
     command:
       -c /config.yml
     environment:
-      - TZ=America/Chicago
+      - TZ=America/Chicago #Change this to your timezone as needed
     restart: unless-stopped
 ```
 
