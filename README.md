@@ -91,6 +91,7 @@ Portainer is now installed.  To access portainer, open a browser on any computer
 Examples: 
 
 http://192.168.11.63:9000
+
 http://Myflexfarmermachine:9000
 
 Create username and password
@@ -135,7 +136,7 @@ services:
       command: --debug --interval 21600 –cleanup
 ```
 
-Note that spacing matters as this is YAML code:
+Note that spacing matters as this is YAML code: (Also note the cap W, this is no bueno, don't do that)
 
  ![image](https://user-images.githubusercontent.com/61926834/132616393-5894bb7e-4efe-4e71-b56e-ce45da375316.png)
 
@@ -163,7 +164,7 @@ cd /home/username
 
 ```
 mkdir flexfarmer
-Cd flexfarmer
+cd flexfarmer
 ```
 
 3.	Create your config file:
@@ -240,7 +241,9 @@ But doing just /mnt makes it easier if you add mount points (additional drives) 
 
 And of course, TZ=America/Chicago – you need your region/city or just remove both the environment and the TZ line to use UTC.  Note that this will effect the time stamps in the flexfarmer.log so perhaps take a moment to set this correctly unless your brain thinks in UTC easily.  I can go either way.
 
-4.	When you are ready, hut update stack
+For a list of timezone options - http://manpages.ubuntu.com/manpages/hirsute/man3/DateTime::TimeZone::Catalog.3pm.html
+
+4.	When you are ready, hit update stack
 5.	Back in the terminal from your flexfarmer folder, run:
 
 ```
