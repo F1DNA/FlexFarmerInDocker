@@ -5,6 +5,7 @@ Written using Ubuntu Server – Ubuntu Desktop should be identical, for Windows 
 *Ubuntu server for Arm / Raspbian can use this guide as well
 
 In addition to installing docker, we are going to setup 3 containers in total:
+
 Portainer 
 
 •	For those experienced with Docker, this is not necessary but for those new to Docker, this will make it very easy to use.  We will be utilizing Portainer in a Docker-Compose fashion.  Docker-Compose is way to setup containers via a configuration file instead of a long command
