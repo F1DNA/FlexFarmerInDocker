@@ -1,7 +1,7 @@
 # FlexFarmerInDocker
 How to Setup Flexfarmer in Docker
 
-Written using Ubuntu Server – Ubuntu Desktop should be identical, for Windows you will need to install docker first, then you should be able to follow this guide with minor changes as needed.  
+Written using Ubuntu Server – Ubuntu Desktop should be identical, for Windows you will need to install docker first which I won't be covering here, then you should be able to skip my install docker section and follow the rest of this guide with minor changes as needed.  
 *Ubuntu server for Arm / Raspbian can use this guide as well
 
 In addition to installing docker, we are going to setup 3 containers in total:
