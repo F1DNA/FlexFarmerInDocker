@@ -6,16 +6,25 @@ Written using Ubuntu Server – Ubuntu Desktop should be identical, for Windows 
 
 In addition to installing docker, we are going to setup 3 containers in total:
 Portainer 
+
 •	For those experienced with Docker, this is not necessary but for those new to Docker, this will make it very easy to use.  We will be utilizing Portainer in a Docker-Compose fashion.  Docker-Compose is way to setup containers via a configuration file instead of a long command
+
 Watchtower
+
 •	Watchtower will check your containers for updates on a schedule, download the new images and restart the container with the new image
+
 FlexFarmer
+
 •	This is why you are here, right?  
 
 Install Docker
+
 Reference the official docker documentation for details
+
 https://docs.docker.com/engine/install/ubuntu/
+
 Setup the repository
+
 1.	Update the apt package index and install packages to allow apt to use a repository over HTTPS
 ```
 sudo apt-get update
@@ -35,7 +44,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 
 3.	Use the following command to set up the stable repository.
 
-  a.	X86_64 / amd64
+a.	X86_64 / amd64
 
 ```
 echo \
