@@ -221,8 +221,8 @@ services:
     image: flexpool/flexfarmer:latest
     container_name: flexfarmer
     volumes:
-      - /home/harry/flexfarmer/config.yml:/config.yml
-      - /home/harry/flexfarmer/flexfarmer.log:/flexfarmer.log
+      - /home/f1dna/flexfarmer/config.yml:/config.yml #Change f1dna to your username
+      - /home/f1dna/flexfarmer/flexfarmer.log:/flexfarmer.log #change f1dna to your username
       - /mnt:/mnt
     command:
       -c /config.yml
