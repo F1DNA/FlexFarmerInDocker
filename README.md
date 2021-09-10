@@ -1,18 +1,19 @@
 # FlexFarmerInDocker
 How to Setup Flexfarmer in Docker
 
-Written using Ubuntu Server – Ubuntu Desktop should be identical, for Windows you will need to install docker first which I won't be covering here, then you should be able to skip my install docker section and follow the rest of this guide with minor changes as needed.  
-*Ubuntu server for Arm / Raspbian can use this guide as well
+Written using Ubuntu Server – Ubuntu Desktop should be identical, for Windows you will need to install docker first which I won't be covering here, then you should be able to skip my install docker section and follow the rest of this guide with minor changes as needed. I.E., file paths and such will be different. 
+
+*Ubuntu server for Arm / Raspbian can use this guide as well*
 
 In addition to installing docker, we are going to setup 3 containers in total:
 
 **Portainer** 
 
-•	For those experienced with Docker, this is not necessary nor should you need my guide at all!  But for those new to Docker, this will make it very easy to use as it provides a GUI via we browser.  We will be utilizing Portainer in a Docker-Compose fashion.  Docker-Compose is way to setup containers via a configuration file instead of a long command
+•	For those experienced with Docker, this is not necessary nor should you need my guide at all!  But for those new to Docker, this will make it very easy to use as it provides a GUI via web browser.  We will be utilizing Portainer in a Docker-Compose fashion.  Docker-Compose is way to setup containers via a configuration file instead of a long command
 
 **Watchtower**
 
-•	Watchtower will check your containers for updates on a schedule, download the new images and restart the container with the new image
+•	Watchtower will check your containers for updates on a schedule, download the new images and restart the container with the new image.  This makes your setup hands off.  When a new Docker image is available, it will be downloaded and then your container is restarted.  In my farm, this restart takes approx 10 seconds before flexfarmer is back up and functioning on the blockchain.  Larger farms, more drives, etc may take a bit longer but this is still very quick.
 
 **FlexFarmer**
 
@@ -20,7 +21,7 @@ In addition to installing docker, we are going to setup 3 containers in total:
 
 **Install Docker**
 
-Reference the official docker documentation for details
+Reference the official docker documentation for more details if you would like, or continue on as I have copied the necessary steps from the official guide here
 
 https://docs.docker.com/engine/install/ubuntu/
 
@@ -43,16 +44,16 @@ lsb-release
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 ```
 
-3.	Use the following command to set up the stable repository.
+3.	Use the following command to set up the stable repository, make sure you grab the correct one for your CPU architecture
 
-a.	X86_64 / amd64
+a.	X86_64 / amd64 
 
 ```
 echo \
   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
-b.	Arm64 (Rasp Pi)
+b.	Arm64 (Rasp Pi and the like)
 ```
 echo \
   "deb [arch=arm64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
@@ -71,6 +72,8 @@ That’s it, Docker is installed!
 You can verify this simply by typing `docker` which will show the basic docker help file
 
 **Install Portainer**
+
+Check out the readme on GitHub or continue on as I have copied the neccessary steps from the official guide
 
 https://github.com/portainer/portainer/blob/develop/README.md
 
@@ -130,13 +133,15 @@ services:
       restart: always
       image: containrrr/watchtower
       environment:
-      - TZ=America/Chicago
+      - TZ=America/Chicago # Change this to your timezone as needed
+        # For a list of timezone options - http://manpages.ubuntu.com/manpages/hirsute/man3/DateTime::TimeZone::Catalog.3pm.html
       volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       command: --debug --interval 21600 –cleanup
 ```
 
-Note that spacing matters as this is YAML code: (Also note the cap W, this is no bueno, don't do that)
+
+Note that spacing matters as this is YAML code: (Also note the cap W in my screenshot, this is no bueno, don't do that.  I had to edit my stack and fix it)
 
  ![image](https://user-images.githubusercontent.com/61926834/132616393-5894bb7e-4efe-4e71-b56e-ce45da375316.png)
 
@@ -228,6 +233,7 @@ services:
       -c /config.yml
     environment:
       - TZ=America/Chicago #Change this to your timezone as needed
+        # For a list of timezone options - http://manpages.ubuntu.com/manpages/hirsute/man3/DateTime::TimeZone::Catalog.3pm.html
     restart: unless-stopped
 ```
 
@@ -237,11 +243,9 @@ So again, we have some options here.  First, I mapped all of /mnt to the contain
 -	/mnt/2ndfolder:/mnt/2ndfolder
 -	/mnt/etc:/mnt/etc
 
-But doing just /mnt makes it easier if you add mount points (additional drives) to your setup later on, you only need to edit the config.yml file and restart the container.  Otherwise you also have to update the stack config.
+Alternatively, doing just /mnt makes it easier if you add mount points (additional drives) to your setup later on, you only need to edit the config.yml file and restart the container.  Otherwise you also have to update the stack config.
 
 And of course, TZ=America/Chicago – you need your region/city or just remove both the environment and the TZ line to use UTC.  Note that this will effect the time stamps in the flexfarmer.log so perhaps take a moment to set this correctly unless your brain thinks in UTC easily.  I can go either way.
-
-For a list of timezone options - http://manpages.ubuntu.com/manpages/hirsute/man3/DateTime::TimeZone::Catalog.3pm.html
 
 4.	When you are ready, hit update stack
 5.	Back in the terminal from your flexfarmer folder, run:
