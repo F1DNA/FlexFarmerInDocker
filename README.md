@@ -73,7 +73,7 @@ You can verify this simply by typing `docker` which will show the basic docker h
 
 **Install Portainer**
 
-Check out the readme on GitHub or continue on as I have copied the neccessary steps from the official guide
+Check out the readme on GitHub or continue on as I have copied the necessary steps from the official guide
 
 https://github.com/portainer/portainer/blob/develop/README.md
 
