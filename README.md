@@ -137,7 +137,7 @@ services:
         # For a list of timezone options - http://manpages.ubuntu.com/manpages/hirsute/man3/DateTime::TimeZone::Catalog.3pm.html
       volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      command: --debug --interval 21600 –cleanup
+      command: --debug --interval 21600 --cleanup
 ```
 
 
@@ -205,8 +205,8 @@ log_file_path: /flexfarmer.log # Write logs to a specific file
 ```
 
 7.	Press “ctrl+x” to exit nano and then press “y” to save
-8.	
-9.	Create the initial flexfarmer.log file:
+
+8.	Create the initial flexfarmer.log file:
 
 ```
 touch flexfarmer.log
@@ -227,7 +227,7 @@ services:
     container_name: flexfarmer
     volumes:
       - /home/f1dna/flexfarmer/config.yml:/config.yml #Change f1dna to your username
-      - /home/f1dna/flexfarmer/flexfarmer.log:/flexfarmer.log #change f1dna to your username
+      - /home/f1dna/flexfarmer/flexfarmer.log:/flexfarmer.log #change f1dna to your username - delete or comment out entirely if not enabling in config.yml
       - /mnt:/mnt
     command:
       -c /config.yml
@@ -254,6 +254,7 @@ And of course, TZ=America/Chicago – you need your region/city or just remove b
 tail -f -n +0 flexfarmer.log
 ```
 6.	Make sure everything looks good here.  No invalid plots, all plot folders showing up, total space looks right, signage points signing, partials submitting, etc
+7.	If you decide not to enable logging and eliminate the flexfarmer.log, you can also check the container log in portainer.  I'm not sure the limitations of that log, how many lines it retains, etc.  I would really encourage enabling the log file in your config incase you need to go back in time to investigate something.
 
 
 
