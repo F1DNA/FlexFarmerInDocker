@@ -5,21 +5,25 @@ Written using Ubuntu Server – Ubuntu Desktop should be identical, for Windows 
 
 *Ubuntu server for Arm / Raspbian can use this guide as well*
 
+Visit [FlexPool.io](https://flexpool.io) to join the pool! (Note that I am in no way affiliated with FlexPool other than pointing my NFT's at their address in hopes of getting some mojos in return)
+
+Come join the [Discord](https://discord.gg/ck74hAum)
+
 In addition to installing docker, we are going to setup 3 containers in total:
 
-**Portainer** 
+# **Portainer** 
 
 •	For those experienced with Docker, this is not necessary nor should you need my guide at all!  But for those new to Docker, this will make it very easy to use as it provides a GUI via web browser.  We will be utilizing Portainer in a Docker-Compose fashion.  Docker-Compose is way to setup containers via a configuration file instead of a long command
 
-**Watchtower**
+# **Watchtower**
 
 •	Watchtower will check your containers for updates on a schedule, download the new images and restart the container with the new image.  This makes your setup hands off.  When a new Docker image is available, it will be downloaded and then your container is restarted.  In my farm, this restart takes approx 10 seconds before flexfarmer is back up and functioning on the blockchain.  Larger farms, more drives, etc may take a bit longer but this is still very quick.
 
-**FlexFarmer**
+# **FlexFarmer**
 
 •	This is why you are here, right?  
 
-**Install Docker**
+## **Install Docker**
 
 Reference the official docker documentation for more details if you would like, or continue on as I have copied the necessary steps from the official guide here
 
@@ -71,7 +75,7 @@ That’s it, Docker is installed!
 
 You can verify this simply by typing `docker` which will show the basic docker help file
 
-**Install Portainer**
+## **Install Portainer**
 
 Check out the readme on GitHub or continue on as I have copied the necessary steps from the official guide
 
@@ -111,6 +115,7 @@ Click anywhere on your local docker instance to open it up:
 
  ![image](https://user-images.githubusercontent.com/61926834/132616319-759dba5d-4465-4d26-a9ce-e56e8d41f2bf.png)
 
+## **Setup Watchtower Container**
 
 Click on stacks.  Stacks is Portainer’s version of Docker-Compose:
 
@@ -157,7 +162,7 @@ That’s it, Watchtower will now check for new images for all 3 of your containe
  
 ![image](https://user-images.githubusercontent.com/61926834/132616412-fbde82bd-7326-4d16-a663-f41fd8f04771.png)
 
-Create FlexFarmer Container:
+## **Create FlexFarmer Container:**
 
 Now we have a bit of setup to do. 
 
@@ -260,6 +265,6 @@ tail -f -n +0 flexfarmer.log
 
 
 
-**Should you feel compelled, you may send a tip in the form of XCH to:**
+# **Should you feel compelled, you may send a tip in the form of XCH to:**
 
 xch1u2jhwq9q37v822ejvjytu289th4wad8azuyu7m0gmjuzzzd76dkqx06phs
