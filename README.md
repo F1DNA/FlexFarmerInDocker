@@ -9,6 +9,8 @@ Visit [FlexPool.io](https://flexpool.io) to join the pool! (Note that I am in no
 
 Come join the [Discord](https://discord.gg/ck74hAum)
 
+# **If you have multiple NFTs to point to FlexPool, see the end of this README for a tip on setting this up**
+
 In addition to installing docker, we are going to setup 3 containers in total:
 
 # **Portainer** 
@@ -263,6 +265,19 @@ tail -f -n +0 flexfarmer.log
 6.	Make sure everything looks good here.  No invalid plots, all plot folders showing up, total space looks right, signage points signing, partials submitting, etc
 7.	If you decide not to enable logging and eliminate the flexfarmer.log, you can also check the container log in portainer.  I'm not sure the limitations of that log, how many lines it retains, etc.  I would really encourage enabling the log file in your config incase you need to go back in time to investigate something.
 
+## **BONUS: Have more than 1 NFT pointed to FlexPool?**
+
+When you create the FlexFarmer container, you just have to name the containers, config and log files different.
+
+1. Name your stack something like ffnftxxx where xxx is the last 3 of your Launcher ID.  I'd advise against a generic name such as flexnft1 and the like as utilizing something you can reference to identify NFT plots are where can be helpful later on
+2. In the web editor for your container, change `container_name: flexfarmer` to `container_name: <same as the stack name>`
+3. In your `/home/username/flexfarmer/` directory, name your config and log files differently, keeping in line with the naming convention of your stack and container.  configxxx.yml and flexfarmerxxx.log to match the naming convention of the stack/container
+4. Make sure you point the volumes of each container in the web editor of your stack to the right config and log files
+5. Make sure you have the correct `plot_directories` and `launcher_id` in each config file
+6. Lastly, give each container a different `worker_name` in the config file
+
+
+NOTE, if you have your OG plots and/or multiple NFTs in the same directories, you will see errors in the logs each time flexfarmer starts up.  Consider segregating this out at some point into seperate directories.  Or get used to the error messages.
 
 
 # **Should you feel compelled, you may send a tip in the form of XCH to:**
