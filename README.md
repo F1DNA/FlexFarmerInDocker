@@ -134,16 +134,18 @@ services:
       image: containrrr/watchtower
       environment:
       - TZ=America/Chicago # Change this to your timezone as needed
-        # For a list of timezone options - http://manpages.ubuntu.com/manpages/hirsute/man3/DateTime::TimeZone::Catalog.3pm.html
+              # For a list of timezone options - http://manpages.ubuntu.com/manpages/hirsute/man3/DateTime::TimeZone::Catalog.3pm.html
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=21600 #This value controls how often in seconds Watchtower checks for new images - Currently set to 6 hours 
+      - WATCHTOWER_DEBUG=true
       volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      command: --debug --interval 21600 --cleanup
 ```
 
 
-Note that spacing matters as this is YAML code: (Also note the cap W in my screenshot, this is no bueno, don't do that.  I had to edit my stack and fix it)
+Note that spacing matters as this is YAML code:
 
- ![image](https://user-images.githubusercontent.com/61926834/132616393-5894bb7e-4efe-4e71-b56e-ce45da375316.png)
+![image](https://user-images.githubusercontent.com/61926834/132967848-8eca98b7-360a-4406-8c0d-80996e4c558f.png)
 
 
 Scroll down and click “Deploy the stack”
