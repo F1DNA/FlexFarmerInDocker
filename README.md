@@ -15,11 +15,11 @@ In addition to installing docker, we are going to setup 3 containers in total:
 
 # **Portainer** 
 
-•	For those experienced with Docker, this is not necessary nor should you need my guide at all!  But for those new to Docker, this will make it very easy to use as it provides a GUI via web browser.  We will be utilizing Portainer in a Docker-Compose fashion.  Docker-Compose is way to setup containers via a configuration file instead of a long command
+•	For those experienced with Docker, this is not necessary nor should you need my guide at all!  But for those new to Docker, this will make it very easy to use as it provides a GUI via web browser.  We will be utilizing Portainer in a Docker-Compose fashion.  Docker-Compose is a way to setup containers via a configuration file instead of a long command
 
 # **Watchtower**
 
-•	Watchtower will check your containers for updates on a schedule, download the new images and restart the container with the new image.  This makes your setup hands off.  When a new Docker image is available, it will be downloaded and then your container is restarted.  In my farm, this restart takes approx 10 seconds before flexfarmer is back up and functioning on the blockchain.  Larger farms, more drives, etc may take a bit longer but this is still very quick.
+•	Watchtower will check your containers for updates on a schedule, download the new images and restart the container with the new image.  This makes your setup hands off.  When a new container image is available, it will be downloaded and then your container is restarted.  In my farm, this restart takes approx 10 seconds before flexfarmer is back up and functioning on the blockchain.  Larger farms, more drives, etc may take a bit longer but this is still very quick.
 
 # **FlexFarmer**
 
