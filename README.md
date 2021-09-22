@@ -59,7 +59,7 @@ echo \
   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
-b.	Arm64 (Rasp Pi and the like)
+b.	Arm64 (Rasp Pi and the like) CURRENTLY NO FLEXFARMER DOCKER IMAGE AVAILABLE - I WILL UPDATE THIS GUIDE WHEN/IF IT BECOMES AVAILABLE - PLEASE DO NOT PROCEED FOR NOW
 ```
 echo \
   "deb [arch=arm64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
