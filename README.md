@@ -59,7 +59,7 @@ echo \
   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
-b.	Arm64 (Rasp Pi and the like) CURRENTLY NO FLEXFARMER DOCKER IMAGE AVAILABLE - I WILL UPDATE THIS GUIDE WHEN/IF IT BECOMES AVAILABLE - PLEASE DO NOT PROCEED FOR NOW
+b.	Arm64 (Rasp Pi and the like) As of 9/22/21, arm64 docker image exits
 ```
 echo \
   "deb [arch=arm64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
